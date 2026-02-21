@@ -61,3 +61,5 @@ typings/
 
 # next.js build output
 .next
+
+backend_project_guide.md.resolved
