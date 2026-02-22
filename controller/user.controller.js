@@ -1,8 +1,7 @@
 import User from '../models/user.model.js';
 import AppError from '../utils/AppError.js';
 
-// @desc    Get all users
-// @route   GET /api/v1/users
+
 const getAllUsers = async (req, res, next) => {
     try {
         const users = await User.find().select('-password');
@@ -17,8 +16,7 @@ const getAllUsers = async (req, res, next) => {
     }
 };
 
-// @desc    Get single user by ID
-// @route   GET /api/v1/users/:id
+
 const getUserById = async (req, res, next) => {
     try {
         const user = await User.findById(req.params.id).select('-password');
@@ -36,8 +34,7 @@ const getUserById = async (req, res, next) => {
     }
 };
 
-// @desc    Create a new user (admin use)
-// @route   POST /api/v1/users
+
 const createUser = async (req, res, next) => {
     try {
         const { name, email, password } = req.body;
@@ -63,8 +60,8 @@ const createUser = async (req, res, next) => {
     }
 };
 
-// @desc    Update user
-// @route   PUT /api/v1/users/:id
+
+
 const updateUser = async (req, res, next) => {
     try {
         const user = await User.findByIdAndUpdate(req.params.id, req.body, {
@@ -86,8 +83,7 @@ const updateUser = async (req, res, next) => {
     }
 };
 
-// @desc    Delete user
-// @route   DELETE /api/v1/users/:id
+
 const deleteUser = async (req, res, next) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id);

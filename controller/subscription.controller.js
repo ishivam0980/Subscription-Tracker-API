@@ -1,8 +1,7 @@
 import Subscription from '../models/subscription.model.js';
 import AppError from '../utils/AppError.js';
 
-// @desc    Get all subscriptions (for the logged-in user)
-// @route   GET /api/v1/subscriptions
+
 const getAllSubscriptions = async (req, res, next) => {
     try {
         const subscriptions = await Subscription.find({ user: req.user._id });
@@ -16,8 +15,7 @@ const getAllSubscriptions = async (req, res, next) => {
     }
 };
 
-// @desc    Get single subscription by ID
-// @route   GET /api/v1/subscriptions/:id
+
 const getSubscriptionById = async (req, res, next) => {
     try {
         const subscription = await Subscription.findById(req.params.id);
@@ -40,8 +38,7 @@ const getSubscriptionById = async (req, res, next) => {
     }
 };
 
-// @desc    Create a new subscription
-// @route   POST /api/v1/subscriptions
+
 const createSubscription = async (req, res, next) => {
     try {
         const subscription = await Subscription.create({
@@ -59,8 +56,7 @@ const createSubscription = async (req, res, next) => {
     }
 };
 
-// @desc    Update subscription
-// @route   PUT /api/v1/subscriptions/:id
+
 const updateSubscription = async (req, res, next) => {
     try {
         let subscription = await Subscription.findById(req.params.id);
@@ -89,8 +85,7 @@ const updateSubscription = async (req, res, next) => {
     }
 };
 
-// @desc    Delete subscription
-// @route   DELETE /api/v1/subscriptions/:id
+
 const deleteSubscription = async (req, res, next) => {
     try {
         const subscription = await Subscription.findById(req.params.id);
