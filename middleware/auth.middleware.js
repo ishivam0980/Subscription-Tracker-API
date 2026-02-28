@@ -20,7 +20,7 @@ const authMiddleware = async (req, res, next) => {
         // If token is invalid or expired, jwt.verify throws an error automatically
 
         // 3. Find user from decoded token
-        const user = await User.findById(decoded.userId).select('-password');
+        const user = await User.findById(decoded.id).select('-password');
         if (!user) {
             throw new AppError('The user belonging to this token no longer exists.', 401);
         }

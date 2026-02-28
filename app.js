@@ -9,6 +9,7 @@ import subscriptionRouter from './routes/subscription.routes.js'
 import connectDB from './config/db.js'
 import errorMiddleware from './middleware/error.middleware.js'
 import AppError from './utils/AppError.js'
+import authLimiter from './middleware/rateLimiter.middleware.js'
 
 dotenv.config({ path: '.env.local' });//dotenv.config() by default looks for .env file
 
@@ -28,7 +29,7 @@ connectDB();
 app.get('/', (req, res) =>
     res.send("Welcome To Subscription Tracker API")
 )
-app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/auth', authLimiter, authRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/subscriptions', subscriptionRouter);
 
